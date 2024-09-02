@@ -34,9 +34,14 @@ def main():
             obj.update(dt)
 
         for asteroid in asteroids:
-            if asteroid.checkCollision(player):
+            if asteroid.check_collision(player):
                 print("Game over!")
                 return
+            for shot in shots:
+                print(shot)
+                if asteroid.check_collision(shot):
+                    asteroid.kill()
+                    shot.kill()
 
         screen.fill("black")
 
